@@ -4,3 +4,6 @@
 [submodule "Optional"]
 	path = Optional
 	url = https://github.com/akrzemi1/Optional.git
+[submodule "optional"]
+	path = optional
+	url = https://github.com/TartanLlama/optional.git
