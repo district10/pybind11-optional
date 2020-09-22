@@ -1,11 +1,12 @@
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 #include <pybind11/stl_bind.h>
-#include "tl/optional.hpp"
+// #include "tl/optional.hpp"
 
-// #include "optional.hpp"
-// template <class T>
-// using optional = std::experimental::optional<T>;
+#define TR2_OPTIONAL_DISABLE_EMULATION_OF_TYPE_TRAITS
+#include "optional.hpp"
+template <class T>
+using optional = std::experimental::optional<T>;
 
 namespace py = pybind11;
 using rvp = py::return_value_policy;
@@ -16,8 +17,8 @@ namespace pybind11
 namespace detail
 {
 template <typename T>
-struct type_caster<tl::optional<T>> : optional_caster<tl::optional<T>>
-// struct type_caster<optional<T>> : optional_caster<optional<T>>
+// struct type_caster<tl::optional<T>> : optional_caster<tl::optional<T>>
+struct type_caster<optional<T>> : optional_caster<optional<T>>
 {
 };
 }
@@ -25,8 +26,8 @@ struct type_caster<tl::optional<T>> : optional_caster<tl::optional<T>>
 
 struct Pod
 {
-    tl::optional<std::string> optional;
-    // optional<std::string> optional;
+    // tl::optional<std::string> optional;
+    optional<std::string> optional;
 };
 
 PYBIND11_MODULE(binding, m)
