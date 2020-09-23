@@ -3,7 +3,6 @@
 #include <pybind11/stl_bind.h>
 // #include "tl/optional.hpp"
 
-#define TR2_OPTIONAL_DISABLE_EMULATION_OF_TYPE_TRAITS
 #include "optional.hpp"
 template <class T>
 using optional = std::experimental::optional<T>;
@@ -27,14 +26,14 @@ struct type_caster<optional<T>> : optional_caster<optional<T>>
 struct Pod
 {
     // tl::optional<std::string> optional;
-    optional<std::string> optional;
+    optional<std::string> opt;
 };
 
 PYBIND11_MODULE(binding, m)
 {
     py::class_<Pod>(m, "Pod") // for testing
         .def(py::init<>())
-        .def_readwrite("optional", &Pod::optional)
+        .def_readwrite("optional", &Pod::opt)
         //
         ;
 }

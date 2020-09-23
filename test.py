@@ -2,7 +2,7 @@ import os
 import sys
 import glob
 import json
-import numpy as np
+# import numpy as np
 
 PWD = os.path.abspath(os.path.dirname(__file__))
 SO_pattern = f'{PWD}/build/**/binding*.cpython-*.so'
